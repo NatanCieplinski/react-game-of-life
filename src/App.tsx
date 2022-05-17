@@ -30,27 +30,27 @@ function App() {
     if (!runningRef.current) {
       return
     }
-    setGrid((g) => {
-      return produce(g, (gridCopy) => {
-        for (let i = 0; i < rowsAmount; i++) {
-          for (let k = 0; k < columnAmount; k++) {
+    setGrid((oldGrid) => {
+      return produce(oldGrid, (gridCopy) => {
+        for (let row = 0; row < rowsAmount; row++) {
+          for (let column = 0; column < columnAmount; column++) {
             let neighbors = 0
             redundant.forEach(([x, y]) => {
-              const newI = i + x
-              const newK = k + y
+              const newRow = row + x
+              const newColumn = column + y
               if (
-                newI >= 0 &&
-                newK >= 0 &&
-                newI < rowsAmount &&
-                newK < columnAmount
+                newRow >= 0 &&
+                newColumn >= 0 &&
+                newRow < rowsAmount &&
+                newColumn < columnAmount
               ) {
-                neighbors += g[newI][newK]
+                neighbors += oldGrid[newRow][newColumn]
               }
             })
             if (neighbors < 2 || neighbors > 3) {
-              gridCopy[i][k] = 0
-            } else if (g[i][k] === 0 && neighbors === 3) {
-              gridCopy[i][k] = 1
+              gridCopy[row][column] = 0
+            } else if (oldGrid[row][column] === 0 && neighbors === 3) {
+              gridCopy[row][column] = 1
             }
           }
         }

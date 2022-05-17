@@ -1,15 +1,17 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { IconPlay } from '../icons'
+import { IconPause, IconPlay } from '../icons'
 
 export const SimulationControls: FunctionComponent<{
+  isSimulationRunning: boolean
   onClear: () => void
   onRandom: () => void
-}> = ({ onClear, onRandom }) => {
+  onSimulationRunClick: () => void
+}> = ({ isSimulationRunning, onClear, onRandom, onSimulationRunClick }) => {
   return (
     <div className="flex gap-4">
       <SimulationControlButton onClick={onClear}>Clear</SimulationControlButton>
-      <SimulationControlButton onClick={() => null}>
-        <IconPlay className="text-white fill-current" />
+      <SimulationControlButton onClick={onSimulationRunClick}>
+        {isSimulationRunning ? <IconPause /> : <IconPlay />}
       </SimulationControlButton>
       <SimulationControlButton onClick={onRandom}>
         Random

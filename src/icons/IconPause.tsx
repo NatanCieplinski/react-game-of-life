@@ -1,8 +1,12 @@
-import { IconProps } from './IconTypes'
-
-export const IconPause: React.FC<IconProps> = (props) => {
+export const IconPause: React.FC = () => {
   return (
-    <svg role="img" height="16" width="16" viewBox="0 0 16 16" {...props}>
+    <svg
+      role="img"
+      height="16"
+      width="16"
+      viewBox="0 0 16 16"
+      className="text-white fill-current"
+    >
       <path d="M2.7 1a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7H2.7zm8 0a.7.7 0 00-.7.7v12.6a.7.7 0 00.7.7h2.6a.7.7 0 00.7-.7V1.7a.7.7 0 00-.7-.7h-2.6z"></path>
     </svg>
   )
